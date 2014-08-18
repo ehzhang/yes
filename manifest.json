@@ -1,0 +1,41 @@
+{
+  "name": "YES - Yelp Enhancement Suite",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Find Groupon Deals wherever you go. On Yelp, anyway.",
+  "homepage_url": "http://groupon.com",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "page": "src/bg/background.html",
+    "persistent": true
+  },
+  "permissions": [
+    "*://api.groupon.com/v2/deals/"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.yelp.com/*"
+      ],
+      "css": [
+        "src/inject/yes-popup.css"
+      ],
+      "js": [
+        "js/jquery/jquery.min.js",
+        "src/inject/yes.js",
+        "src/inject/inject.js"
+      ]
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://; object-src 'self'",
+  "web_accessible_resources": [
+    "js/jquery/jquery.min.js",
+    "images/*.png",
+    "fonts/*.ttf"
+  ]
+}
